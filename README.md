@@ -3,7 +3,7 @@ A Python module that uses Nekos API
 
 # Install
 ```
-pip install -U https://github.com/Nekos-life/nekos.py
+pip install -U https://github.com/Nekos-life/nekos.py/archive/master.zip
 ```
 
 # Usage example
