@@ -22,7 +22,7 @@ def img(target: str):
         'anal', 'slap', 'hentai', 'avatar', 'erofeet', 'holo', 'keta',
         'blowjob', 'pussy', 'tits', 'holoero', 'lizard', 'pussy_jpg', 'pwankg',
         'classic', 'kuni', 'pat', '8ball', 'kiss', 'femdom', 'neko', 'cuddle',
-        'erok', 'fox_girl', 'boobs', 'Random_hentai_gif', 'smallboobs', 'hug', 'ero'
+        'erok', 'fox_girl', 'boobs', 'random_hentai_gif', 'smallboobs', 'hug', 'ero'
     ]
 
     if target is None:
@@ -30,6 +30,9 @@ def img(target: str):
 
     if target.lower() not in possible:
         raise errors.InvalidArgument("You haven't added any valid arguments\nArguments: {}".format(possible))
+
+    if target.lower() == "random_hentai_gif":
+        target = "Random_hentai_gif"
 
     try:
         r = http.get("/img/" + target.lower())
