@@ -31,11 +31,11 @@ def img(target: str):
     if target.lower() not in possible:
         raise errors.InvalidArgument("You haven't added any valid arguments\nArguments: {}".format(possible))
 
-    if target.lower() == "random_hentai_gif":
-        target = "Random_hentai_gif"
-
     try:
-        r = http.get("/img/" + target.lower())
+        if target.lower() == "random_hentai_gif":
+            r = http.get("/img/Random_hentai_gif")
+        else:
+            r = http.get("/img/" + target.lower())
     except Exception as e:
         raise errors.NothingFound(noresponse)
 
