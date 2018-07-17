@@ -16,13 +16,14 @@ def eightball():
 def img(target: str):
     possible = [
         'feet', 'yuri', 'trap', 'futanari', 'hololewd', 'lewdkemo',
-        'solog', 'feetg', 'cum', 'erokemo', 'les', 'lewdk', 'ngif',
-        'meow', 'tickle', 'lewd', 'feed', 'eroyuri', 'eron', 'cum_jpg',
-        'bj', 'nsfw_neko_gif', 'solo', 'kemonomimi', 'nsfw_avatar', 'poke',
-        'anal', 'slap', 'hentai', 'avatar', 'erofeet', 'holo', 'keta',
-        'blowjob', 'pussy', 'tits', 'holoero', 'lizard', 'pussy_jpg', 'pwankg',
-        'classic', 'kuni', 'pat', '8ball', 'kiss', 'femdom', 'neko', 'cuddle',
-        'erok', 'fox_girl', 'boobs', 'random_hentai_gif', 'smallboobs', 'hug', 'ero'
+        'solog', 'feetg', 'cum', 'erokemo', 'les', 'wallpaper', 'lewdk',
+        'ngif', 'meow', 'tickle', 'lewd', 'feed', 'gecg', 'eroyuri', 'eron',
+        'cum_jpg', 'bj', 'nsfw_neko_gif', 'solo', 'kemonomimi', 'nsfw_avatar',
+        'gasm', 'poke', 'anal', 'slap', 'hentai', 'avatar', 'erofeet', 'holo',
+        'keta', 'blowjob', 'pussy', 'tits', 'holoero', 'lizard', 'pussy_jpg',
+        'pwankg', 'classic', 'kuni', 'waifu', 'pat', '8ball', 'kiss', 'femdom',
+        'neko', 'spank', 'cuddle', 'erok', 'fox_girl', 'boobs', 'Random_hentai_gif',
+        'smallboobs', 'hug', 'ero'
     ]
 
     if target is None:
