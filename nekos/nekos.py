@@ -23,7 +23,7 @@ def img(target: str):
         'keta', 'blowjob', 'pussy', 'tits', 'holoero', 'lizard', 'pussy_jpg',
         'pwankg', 'classic', 'kuni', 'waifu', 'pat', '8ball', 'kiss', 'femdom',
         'neko', 'spank', 'cuddle', 'erok', 'fox_girl', 'boobs', 'random_hentai_gif',
-        'smallboobs', 'hug', 'ero'
+        'smallboobs', 'hug', 'ero', 'smug'
     ]
 
     if target is None:
