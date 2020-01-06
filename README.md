@@ -9,7 +9,7 @@ pip install -U https://github.com/Nekos-life/nekos.py/archive/master.zip
 # Usage example
 ```py
 import nekos
-print(nekos.cat("meow"))
+print(nekos.cat())
 
 >>> 'https://cdn.nekos.life/meow/04D5A.jpg'
 ```
