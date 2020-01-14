@@ -1,5 +1,5 @@
 import re
-
+import setuptools
 from setuptools import setup
 
 
@@ -17,7 +17,7 @@ setup(
     author='AlexFlipnote',
     url='https://github.com/Nekos-life/nekos.py',
     version=version,
-    packages=['nekos'],
+    packages=setuptools.find_packages(),
     license='GNU v3',
     description='A Python module that uses Nekos API',
     include_package_data=True
