@@ -74,7 +74,7 @@ def img(tag: str) -> str:
         "erok",
         "fox_girl",
         "boobs",
-        "Random_hentai_gif",
+        "random_hentai_gif",
         "smallboobs",
         "hug",
         "ero",
@@ -84,10 +84,12 @@ def img(tag: str) -> str:
         "woof",
     ]
 
-    if tag not in possible:
+    if tag.lower() not in possible:
         raise InvalidArgument(
             f"The tag provided does not exist, \npossible tags: {possible}"
         )
+    if tag.lower() == "random_hentai_gif":
+        return http.get("/img/Random_hentai_gif")["url"]
     return http.get(f"/img/{tag}")["url"]
 
 
