@@ -1,35 +1,18 @@
 import requests
 
+from .errors import NothingFound
 
-class RequestsApi:
-    def __init__(self, base_url, **kwargs):
+
+class RequestAPI:
+    def __init__(self, base_url) -> None:
         self.base_url = base_url
-        self.session = requests.Session()
-        for arg in kwargs:
-            if isinstance(kwargs[arg], dict):
-                kwargs[arg] = self.__deep_merge(getattr(self.session, arg), kwargs[arg])
-            setattr(self.session, arg, kwargs[arg])
+        self._session = requests.Session()
 
-    def get(self, url, **kwargs):
-        return self.session.get(self.base_url + url, **kwargs)
-
-    def post(self, url, **kwargs):
-        return self.session.post(self.base_url + url, **kwargs)
-
-    @staticmethod
-    def __deep_merge(source, destination):
-        for key, value in source.items():
-            if isinstance(value, dict):
-                node = destination.setdefault(key, {})
-                RequestsApi.__deep_merge(value, node)
-            else:
-                destination[key] = value
-        return destination
+    def get(self, endpoint: str) -> dict:
+        response = self._session.get(f"{self.base_url}{endpoint}")
+        if response.status_code in [404, 500]:
+            raise NothingFound("Unable to contact API.")
+        return response.json()
 
 
-baseurl = RequestsApi("https://nekos.life/api/v2")
-
-
-def get(endpoint):
-    r = baseurl.get(endpoint)
-    return r.json()
+http = RequestAPI("https://nekos.life/api/v2")

@@ -1,22 +1,22 @@
 class NekoException(Exception):
-    """ Base exception class for nekos.py """
+    """Base exception class for nekos.py"""
 
     pass
 
 
 class NothingFound(NekoException):
-    """ The API didn't return anything """
+    """The API didn't return anything"""
 
     pass
 
 
 class EmptyArgument(NekoException):
-    """ When no target is defined """
+    """When no target is defined"""
 
     pass
 
 
 class InvalidArgument(NekoException):
-    """ Invalid argument within the category """
+    """Invalid argument within the category"""
 
     pass
