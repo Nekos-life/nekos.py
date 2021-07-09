@@ -1,1 +1,1 @@
-requests
+httpx>=1.18.1
