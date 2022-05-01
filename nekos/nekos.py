@@ -53,7 +53,7 @@ def img(target: str):
             r = http.get("/img/Random_hentai_gif")
         else:
             r = http.get("/img/" + target.lower())
-    except Exception as e:
+    except Exception:
         raise errors.NothingFound(noresponse)
 
     return r["url"]
@@ -82,34 +82,34 @@ def spoiler(text: str):
 def cat():
     try:
         return http.get("/img/meow")["url"]
-    except Exception as e:
+    except Exception:
         raise errors.NothingFound(noresponse)
 
 
 def textcat():
     try:
         return http.get("/cat")["cat"]
-    except Exception as e:
+    except Exception:
         raise errors.NothingFound(noresponse)
 
 
 def why():
     try:
         return http.get("/why")["why"]
-    except Exception as e:
+    except Exception:
         raise errors.NothingFound(noresponse)
 
 
 def fact():
     try:
         return http.get("/fact")["fact"]
-    except Exception as e:
+    except Exception:
         raise errors.NothingFound(noresponse)
 
 
 def name():
     try:
         return http.get("/name")["name"]
-    except Exception as e:
+    except Exception:
         raise errors.NothingFound(noresponse)
 
