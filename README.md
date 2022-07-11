@@ -12,9 +12,12 @@ pip install nekos.py
 # Usage example
 ```py
 import nekos
-print(nekos.get_neko("meow"))
 
+print(nekos.get_neko("meow"))
 >>> 'https://cdn.nekos.life/meow/02D1A.jpg'
+
+print(nekos.get_neko("owoify", "Nekos.life is really awesome!"))
+>>> 'NYekos.wife is weawwy awesome UwU'
 ```
 
 # Endpoints
