@@ -12,17 +12,36 @@ pip install nekos.py
 # Usage example
 ```py
 import nekos
-print(nekos.cat())
+print(nekos.get_neko("meow"))
 
->>> 'https://cdn.nekos.life/meow/04D5A.jpg'
+>>> 'https://cdn.nekos.life/meow/02D1A.jpg'
 ```
 
 # Endpoints
-NOTE: You must call them as functions
-- cat
-- eightball
-- fact
-- img
-- owoify
-- textcat
+NOTE: You must call them as function's parameter
+- tickle
+- slap
+- poke
+- pat
+- neko
+- meow
+- lizard
+- kiss
+- fox_girl
+- feed
+- cuddle
 - why
+- cat
+- owoify (Includes parameter `?text=`)
+- fact
+- ngif
+- smug
+- baka
+- woof
+- spoiler (Includes parameter `?text=`)
+- wallpaper
+- goose
+- gecg
+- avatar
+- waifu
+- 8ball
