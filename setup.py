@@ -16,7 +16,8 @@ with open("requirements.txt") as f:
 
 
 if not version:
-    raise RuntimeError("version is not set")
+    print("version is not set")
+    return
 
 
 setup(
