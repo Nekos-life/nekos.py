@@ -1,115 +1,61 @@
-import urllib
+import requests, urllib
+from json import loads as json_parse
+from json import dumps as json_stringify
 
-from . import http, dict, errors
+APIURL = "https://nekos.life/api/v2"
 
-noresponse = "Couldn't contact the API right now..."
+# ENDPOINTS QUICKDOCS
+# [0] - NAME
+# [1] - URL
+# [2] - JSON GET | {}.get()
+ENDPOINTS = [
+  ["tickle", "/img/tickle", "url"],
+  ["slap", "/img/slap", "url"],
+  ["poke", "/img/poke", "url"],
+  ["pat", "/img/pat", "url"],
+  ["neko", "/img/neko", "url"],
+  ["meow", "/img/meow", "url"],
+  ["lizard", "/img/lizard", "url"],
+  ["kiss", "/img/kiss", "url"],
+  ["hug", "/img/hug", "url"],
+  ["fox_girl", "/img/fox_girl", "url"],
+  ["feed", "/img/feed", "url"],
+  ["cuddle", "/img/cuddle", "url"],
+  ["why", "/why", "why"],
+  ["cat", "/cat", "cat"],
+  ["owoify", "/owoify?", "owo"],
+  ["fact", "/fact", "fact"],
+  ["ngif", "/img/ngif", "url"],
+  ["smug", "/img/smug", "url"],
+  ["baka", "/img/baka", "url"],
+  ["woof", "/img/woof", "url"],
+  ["spoiler", "/spoiler?", "owo"],
+  ["wallpaper", "/img/wallpaper", "url"],
+  ["goose", "/img/goose", "url"],
+  ["gecg", "/img/gecg", "url"],
+  ["avatar", "/img/avatar", "url"],
+  ["waifu", "/img/waifu", "url"],
+  ["8ball", "/8ball", "url"]
+]
 
+def get_neko(neko_type = str, query_text = str):
+  typefound = False
+  nekoindex = 0
+  for t in ENDPOINTS:
+    if neko_type == t[0]:
+      typefound = True
+      nekoindex = ENDPOINTS.index(t)
+  
+  if not typefound == True:
+    return f"Type \"{neko_type}\" not found."
+    exit()
 
-def eightball():
-    r = http.get("/8ball")
-    return dict.JsonDict({"text": r["response"], "image": r["url"]})
+  reqURL = APIURL + eval(f"ENDPOINTS[{nekoindex}][1]")
 
+  if ENDPOINTS[nekoindex][1].endswith("?"):
+    if query_text:
+        reqURL = f"{reqURL}text={urllib.parse.quote(query_text)}"
 
-def img(target: str):
-    possible = [
-        "wallpaper",
-        "ngif",
-        "tickle",
-        #"lewd", Provides 1 image
-        "feed",
-        "gecg",
-        "gasm",
-        "slap",
-        "avatar",
-        "lizard",
-        "waifu",
-        "pat",
-        "8ball",
-        "kiss",
-        "neko",
-        "spank",
-        "cuddle",
-        "fox_girl",
-        "hug",
-        "smug",
-        "goose",
-        "woof",
-    ]
-
-    if target is None:
-        raise errors.EmptyArgument(
-            "You have to at least define an argument in string format\nArguments: {}".format(
-                possible
-            )
-        )
-
-    if target.lower() not in possible:
-        raise errors.InvalidArgument(
-            "You haven't added any valid arguments\nArguments: {}".format(possible)
-        )
-
-    try:
-        if target.lower() == "random_hentai_gif":
-            r = http.get("/img/Random_hentai_gif")
-        else:
-            r = http.get("/img/" + target.lower())
-    except Exception:
-        raise errors.NothingFound(noresponse)
-
-    return r["url"]
-
-
-def owoify(text: str):
-    if text is None:
-        raise errors.EmptyArgument(
-            "You have to enter a string you want to enter to API"
-        )
-
-    r = http.get("/owoify?text=" + urllib.parse.quote(text))
-    return r["owo"]
-
-
-def spoiler(text: str):
-    if text is None:
-        raise errors.EmptyArgument(
-            "You have to enter a string you want to enter to API"
-        )
-
-    r = http.get("/spoiler?text=" + urllib.parse.quote(text))
-    return r["owo"]
-
-
-def cat():
-    try:
-        return http.get("/img/meow")["url"]
-    except Exception:
-        raise errors.NothingFound(noresponse)
-
-
-def textcat():
-    try:
-        return http.get("/cat")["cat"]
-    except Exception:
-        raise errors.NothingFound(noresponse)
-
-
-def why():
-    try:
-        return http.get("/why")["why"]
-    except Exception:
-        raise errors.NothingFound(noresponse)
-
-
-def fact():
-    try:
-        return http.get("/fact")["fact"]
-    except Exception:
-        raise errors.NothingFound(noresponse)
-
-
-def name():
-    try:
-        return http.get("/name")["name"]
-    except Exception:
-        raise errors.NothingFound(noresponse)
-
+  req = requests.get(reqURL).content.decode("ascii")
+  resp = json_parse(req).get(eval(f"ENDPOINTS[{nekoindex}][2]"))
+  return resp
