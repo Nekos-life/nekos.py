@@ -15,7 +15,7 @@ def img(target: str):
         "wallpaper",
         "ngif",
         "tickle",
-        #"lewd", Provides 1 image
+        # "lewd", Provides 1 image
         "feed",
         "gecg",
         "gasm",
@@ -37,24 +37,20 @@ def img(target: str):
     ]
 
     if target is None:
-        raise errors.EmptyArgument(
-            "You have to at least define an argument in string format\nArguments: {}".format(
-                possible
-            )
-        )
+        raise errors.EmptyArgument(f"You have to at least define an argument in string format\nArguments: {possible}")
+
 
     if target.lower() not in possible:
-        raise errors.InvalidArgument(
-            "You haven't added any valid arguments\nArguments: {}".format(possible)
-        )
+        raise errors.InvalidArgument(f"You haven't added any valid arguments\nArguments: {possible}")
+
 
     try:
         if target.lower() == "random_hentai_gif":
             r = http.get("/img/Random_hentai_gif")
         else:
-            r = http.get("/img/" + target.lower())
-    except Exception:
-        raise errors.NothingFound(noresponse)
+            r = http.get(f"/img/{target.lower()}")
+    except Exception as e:
+        raise errors.NothingFound(noresponse) from e
 
     return r["url"]
 
@@ -65,7 +61,7 @@ def owoify(text: str):
             "You have to enter a string you want to enter to API"
         )
 
-    r = http.get("/owoify?text=" + urllib.parse.quote(text))
+    r = http.get(f"/owoify?text={urllib.parse.quote(text)}")
     return r["owo"]
 
 
@@ -75,41 +71,40 @@ def spoiler(text: str):
             "You have to enter a string you want to enter to API"
         )
 
-    r = http.get("/spoiler?text=" + urllib.parse.quote(text))
+    r = http.get(f"/spoiler?text={urllib.parse.quote(text)}")
     return r["owo"]
 
 
 def cat():
     try:
         return http.get("/img/meow")["url"]
-    except Exception:
-        raise errors.NothingFound(noresponse)
+    except Exception as e:
+        raise errors.NothingFound(noresponse) from e
 
 
 def textcat():
     try:
         return http.get("/cat")["cat"]
-    except Exception:
-        raise errors.NothingFound(noresponse)
+    except Exception as e:
+        raise errors.NothingFound(noresponse) from e
 
 
 def why():
     try:
         return http.get("/why")["why"]
-    except Exception:
-        raise errors.NothingFound(noresponse)
+    except Exception as e:
+        raise errors.NothingFound(noresponse) from e
 
 
 def fact():
     try:
         return http.get("/fact")["fact"]
-    except Exception:
-        raise errors.NothingFound(noresponse)
+    except Exception as e:
+        raise errors.NothingFound(noresponse) from e
 
 
 def name():
     try:
         return http.get("/name")["name"]
-    except Exception:
-        raise errors.NothingFound(noresponse)
-
+    except Exception as e:
+        raise errors.NothingFound(noresponse) from e
